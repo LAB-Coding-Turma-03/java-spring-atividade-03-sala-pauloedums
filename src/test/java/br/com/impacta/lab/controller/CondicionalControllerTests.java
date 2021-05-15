@@ -52,4 +52,30 @@ public class CondicionalControllerTests {
 		
 	}
 	
+	@Test
+	public void shouldReturnDigiteUmaIdadeValida() throws Exception {
+		RequestBuilder request = get("/atividades/condicional").queryParam("idade", "0")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("Digite uma idade válida.".toUpperCase(), response.toUpperCase());
+		
+	}
+
+	@Test
+	public void shouldReturnDigiteUmaIdadeValidaMaxLength() throws Exception {
+		RequestBuilder request = get("/atividades/condicional").queryParam("idade", "123")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("Digite uma idade válida.".toUpperCase(), response.toUpperCase());
+		
+	}
+	
 }
