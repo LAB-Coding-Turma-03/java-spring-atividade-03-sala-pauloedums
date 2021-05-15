@@ -25,8 +25,18 @@ public class CondicionalController {
 		 *  
 		 */
 		
+		String retorno = "";
+		if(idade > 18 && idade <= 122) {
+			 // considerando que o ser humano mais velho do mundo possuiu 122 anos
+			 // https://pt.wikipedia.org/wiki/Lista_das_pessoas_mais_velhas_do_mundo
+			retorno = "Possui mais de 18 anos";
+		} else if( idade < 18 && idade >= 1) {
+			retorno = "Possui menos de 18 anos";
+		} else {
+			retorno = "Digite uma idade válida.";
+		}
 		
-		return ResponseEntity.ok("APÓS O ALGORITMO COLOCAR O TEXTO/VARIAVEL DE RETORNO AQUI");
+		return ResponseEntity.ok(retorno);
 	}
 	
 }
